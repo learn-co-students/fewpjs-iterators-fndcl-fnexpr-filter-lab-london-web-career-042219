@@ -7,9 +7,11 @@ function findMatching(arrayDrivers, string) {
 }
 
 function fuzzyMatch(arrayDrivers, string) {
-  return arrayDrivers.filter(function(driver) {
-    for (char of string.split(" ")) {
-      driver.charAt(0).toUpperCase() === char.toUpperCase();
-    }
-  });
+  return arrayDrivers.filter(
+    driver => string.charAt(0).toUpperCase() === driver.charAt(0).toUpperCase()
+  );
+}
+
+function matchName(arrayDrivers, string) {
+  return arrayDrivers.filter(driver => driver.name === string);
 }
