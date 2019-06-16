@@ -13,19 +13,20 @@ function findMatching(drivers, string) {
 
 function fuzzyMatch(drivers, startingLetters) {
   //This function takes an array of drivers and a string as arguments for querying the array, and returns all drivers whose names begin with the provided letters.
+  return drivers.filter(driver => ace(driver, startingLetters));
+}
 
-  return drivers.filter(driver => {
-    let start = startingLetters.split("");
-    let fuzzy;
-    for (let i = 0; i < start.length; i++) {
-      if (start[i] == driver[i]) {
-        fuzzy = true;
-      } else {
-        fuzzy = false;
-      }
+function ace(driver, startingLetters) {
+  let start = startingLetters.split("");
+  let fuzzy;
+  for (let i = 0; i < start.length; i++) {
+    if (start[i] == driver[i]) {
+      fuzzy = true;
+    } else {
+      fuzzy = false;
     }
-    return fuzzy;
-  });
+  }
+  return fuzzy;
 }
 
 function matchName(drivers, string) {
